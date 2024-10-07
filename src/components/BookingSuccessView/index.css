@@ -19,6 +19,16 @@
   text-align: center;
 }
 
+@media screen and (min-width: 768px) {
+  .success-mssg-card {
+    width: 451px;
+    height: 300px;
+    border-radius: 16px;
+    background-color: #ffffff;
+    padding: 48px;
+  }
+}
+
 .tick-img {
   width: 65px;
   height: 64px;
@@ -56,7 +66,9 @@
   background-color: #2563eb;
   color: #ffffff;
   border: none;
-  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 -1px 0 0 rgba(0, 0, 0, 0.2),
+    0 1px 0 0 rgba(0, 0, 0, 0.08);
 
   font-family: Inter;
   font-size: 14px;
