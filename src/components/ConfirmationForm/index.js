@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import './index.css'
+import {v4 as uuidV4} from 'uuid'
 import BookingContext from '../../context/BookingContext'
 
 class ConfirmationForm extends Component {
@@ -30,6 +31,7 @@ class ConfirmationForm extends Component {
     } = this.bookingContext
 
     addTrip({
+      tripId: uuidV4(),
       name,
       startLocation,
       endLocation,
@@ -103,7 +105,7 @@ class ConfirmationForm extends Component {
               Travel Assistance:
             </p>
             <p className="confirmation-form-trip-deatils-item-value">
-              {travelAssistance}
+              {travelAssistance === '' ? 'Not Required' : travelAssistance}
             </p>
           </div>
           <button

@@ -1,5 +1,4 @@
 import {useContext} from 'react'
-import {v4 as uuidv4} from 'uuid'
 import {Link} from 'react-router-dom'
 import MobileViewNavbar from '../MobileViewNavbar'
 import DesktopViewNavbar from '../DesktopViewNavbar'
@@ -41,9 +40,10 @@ const MyTrips = () => {
         <div className="my-trips-content-container">
           <h1 className="my-trips-heading">My Trips</h1>
           <ul className="my-trips-list">
-            {myTripsList.map(each => (
-              <MyTripItem key={uuidv4()} tripDetails={each} />
-            ))}
+            {myTripsList.map(each => {
+              const {tripId} = each
+              return <MyTripItem key={tripId} tripDetails={each} />
+            })}
           </ul>
         </div>
       )}

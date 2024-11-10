@@ -9,6 +9,20 @@ import NotFound from './components/NotFound'
 import './App.css'
 import BookingContext from './context/BookingContext'
 
+// {
+//   name: 'rahul',
+//   startLocation: 'salem',
+//   endLocation: 'dubai',
+//   startDate: '2024-10-10',
+//   endDate: '2024-10-25',
+//   guestsDetails: {
+//     adults: 2,
+//     children: 1,
+//     infants: 0,
+//   },
+//   travelAssistance: 'Flight',
+// },
+
 // Replace your code here
 class App extends Component {
   state = {
@@ -25,21 +39,7 @@ class App extends Component {
     travelAssistance: '',
     bookingInProgress: true,
     activeFormId: 'YOUR_DETAILS',
-    myTripsList: [
-      // {
-      //   name: 'rahul',
-      //   startLocation: 'salem',
-      //   endLocation: 'dubai',
-      //   startDate: '2024-10-10',
-      //   endDate: '2024-10-25',
-      //   guestsDetails: {
-      //     adults: 2,
-      //     children: 1,
-      //     infants: 0,
-      //   },
-      //   travelAssistance: 'Flight',
-      // },
-    ],
+    myTripsList: [],
   }
 
   setName = name => this.setState({name})
@@ -52,14 +52,19 @@ class App extends Component {
 
   setEndDate = endDate => this.setState({endDate})
 
+  setGuestsDetails = guestsDetails => this.setState({guestsDetails})
+
+  setTravelAssistence = travelAssistance => this.setState({travelAssistance})
+
   addTrip = bookingDetails =>
     this.setState(prevState => ({
       myTripsList: [...prevState.myTripsList, bookingDetails],
     }))
 
-  setGuestsDetails = guestsDetails => this.setState({guestsDetails})
-
-  setTravelAssistence = travelAssistance => this.setState({travelAssistance})
+  removeTrip = tripId =>
+    this.setState(prevState => ({
+      myTripsList: prevState.myTripsList.filter(item => item.tripId !== tripId),
+    }))
 
   resetBooking = () =>
     this.setState(prevState => ({
@@ -121,6 +126,7 @@ class App extends Component {
           setTravelAssistence: this.setTravelAssistence,
           resetBooking: this.resetBooking,
           addTrip: this.addTrip,
+          removeTrip: this.removeTrip,
         }}
       >
         <Switch>

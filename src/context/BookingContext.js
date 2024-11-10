@@ -26,6 +26,7 @@ const BookingContext = React.createContext({
   setTravelAssistence: () => {},
   resetBooking: () => {},
   addTrip: () => {},
+  removeTrip: () => {},
 })
 
 export default BookingContext

@@ -1,8 +1,11 @@
 import './index.css'
+import BookingContext from '../../context/BookingContext'
 
 const MyTripItem = props => {
   const {tripDetails} = props
-  const {endLocation, startDate, endDate} = tripDetails
+
+  const {tripId, endLocation, startDate, endDate} = tripDetails
+
   return (
     <li className="my-trip-list-item">
       <h1 className="my-trip-item-name">{endLocation}</h1>
@@ -12,11 +15,26 @@ const MyTripItem = props => {
           {startDate} to {endDate}
         </p>
       </div>
-      <button type="button" className="trip-cancel-btn">
-        cancel
-      </button>
+      <BookingContext.Consumer>
+        {value => {
+          const {removeTrip} = value
+          const onClickCancelBtn = () => {
+            removeTrip(tripId)
+          }
+          return (
+            <button
+              type="button"
+              className="trip-cancel-btn"
+              onClick={onClickCancelBtn}
+            >
+              cancel
+            </button>
+          )
+        }}
+      </BookingContext.Consumer>
     </li>
   )
 }
 
+MyTripItem.contextType = BookingContext
 export default MyTripItem
